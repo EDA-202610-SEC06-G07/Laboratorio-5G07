@@ -206,3 +206,6 @@ def sub_list(my_list, pos, num_elements):
         count += 1
 
     return nl
+
+def default_sort_criteria(element1, element2):
+    return element1 < element2

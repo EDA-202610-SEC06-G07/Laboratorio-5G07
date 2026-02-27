@@ -52,3 +52,6 @@ def delete_element(my_list, pos):
     else:
         my_list["elements"].pop(pos)
         my_list["size"] -= 1
+
+def default_sort_criteria(element1, element2):
+    return element1 < element2
