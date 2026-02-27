@@ -65,3 +65,18 @@ def insertion_sort():
 def shell_sort(my_list, default_sort_criteria):
     n = size(my_list)
     gap = n//2
+    
+    while gap > 0:
+        for i in range(gap, n):
+            active = get_element(my_list, i)
+            j = i
+            
+            while j >= gap and default_sort_criteria(active, get_element(my_list, j-gap)):
+                my_list['elements'][j] = my_list['elements'][j-gap]
+                j -= gap
+                
+            my_list['elements'][j] = active
+        
+        gap //= 2
+        
+    return my_list
