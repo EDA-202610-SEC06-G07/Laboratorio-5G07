@@ -55,3 +55,13 @@ def delete_element(my_list, pos):
 
 def default_sort_criteria(element1, element2):
     return element1 < element2
+
+def selection_sort():
+    pass
+
+def insertion_sort():
+    pass
+
+def shell_sort(my_list, default_sort_criteria):
+    n = size(my_list)
+    gap = n//2

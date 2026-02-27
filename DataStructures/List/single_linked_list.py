@@ -210,11 +210,7 @@ def sub_list(my_list, pos, num_elements):
 def default_sort_criteria(element1, element2):
     return element1 < element2
 
-def selection_sort():
-    pass
 
-def insertion_sort():
-    pass
-
-def shell_sort():
-    pass
+    
+            
+    
