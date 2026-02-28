@@ -210,6 +210,32 @@ def sub_list(my_list, pos, num_elements):
 def default_sort_criteria(element1, element2):
     return element1 < element2
 
+def insertion_sort(my_list, sort_crit):
+    sorted_head = None
+    actual = my_list["first"]
+
+    while actual is not None:
+
+        next_node = actual["next"]  
+        
+        if sorted_head is None or sort_crit(actual["info"], sorted_head["info"]):
+            actual["next"] = sorted_head
+            sorted_head = actual
+
+        else:
+            search = sorted_head
+
+            while (search["next"] is not None and
+                   not sort_crit(actual["info"], search["next"]["info"])):
+                search = search["next"]
+
+            actual["next"] = search["next"]
+            search["next"] = actual
+
+        actual = next_node
+
+    my_list["first"] = sorted_head
+    return my_list
 
     
             
