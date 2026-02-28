@@ -52,12 +52,21 @@ def delete_element(my_list, pos):
     else:
         my_list["elements"].pop(pos)
         my_list["size"] -= 1
+    
+    return my_list
 
 def default_sort_criteria(element1, element2):
     return element1 < element2
 
-def selection_sort():
-    pass
+def selection_sort(my_list):
+    for i in range(len(my_list)):
+        indice_mas_bajo = i
+        for j in range(i+1, len(my_list)):
+            if default_sort_criteria(my_list[j],my_list[indice_mas_bajo]):
+                indice_mas_bajo = j
+        my_list[i], my_list[indice_mas_bajo] = my_list[indice_mas_bajo], my_list[i]
+    
+    return my_list
 
 def insertion_sort(my_list, sort_crit):
     size=my_list["size"]
