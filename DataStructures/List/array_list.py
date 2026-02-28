@@ -59,8 +59,22 @@ def default_sort_criteria(element1, element2):
 def selection_sort():
     pass
 
-def insertion_sort():
-    pass
+def insertion_sort(my_list, sort_crit):
+    size=my_list["size"]
+    dato=my_list["elements"]
+    for i in range(1,size):
+        actual=dato[i]
+        j=i-1
+        while j>=0 and sort_crit(dato[j],actual):
+             dato[j + 1] = dato[j]
+             j -= 1
+
+        dato[j + 1] = actual
+
+    return my_list
+        
+        
+    
 
 def shell_sort(my_list, default_sort_criteria):
     n = size(my_list)
