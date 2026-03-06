@@ -237,6 +237,12 @@ def insertion_sort(my_list, sort_crit):
     my_list["first"] = sorted_head
     return my_list
 
+def selection_sort(my_list, sort_crit):
+    pass
+
+def shell_sort(my_list, sort_crit):
+    pass
+
     
             
     
