@@ -237,6 +237,52 @@ def insertion_sort(my_list, sort_crit):
     my_list["first"] = sorted_head
     return my_list
 
+def selection_sort(my_list, sort_crit):
+    
+    n = size(my_list)
+    
+    for i in range(n):
+        min_idx = i
+        
+        for j in range(i + 1, n):
+            current_j_info = get_element(my_list, j)
+            min_info = get_element(my_list, min_idx)
+            
+            if sort_crit(current_j_info, min_info):
+                min_idx = j
+                
+        if min_idx != i:
+            exchange(my_list, i, min_idx)
+            
+    return my_list
+
+def shell_sort(my_list, sort_crit):
+
+    n = size(my_list)
+    gap = n // 2
+    
+    while gap > 0:
+
+        for i in range(gap, n):
+
+            temp_info = get_element(my_list, i)
+            j = i
+
+            while j >= gap:
+
+                prev_info = get_element(my_list, j - gap)
+
+                if sort_crit(temp_info, prev_info):
+                    change_info(my_list, j, prev_info)
+                    j -= gap
+
+                else:
+                    break
+
+            change_info(my_list, j, temp_info)
+        gap //= 2
+
+    return my_list
     
             
     
