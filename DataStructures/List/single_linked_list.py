@@ -241,8 +241,32 @@ def selection_sort(my_list, sort_crit):
     pass
 
 def shell_sort(my_list, sort_crit):
-    pass
 
+    n = size(my_list)
+    gap = n // 2
+    
+    while gap > 0:
+
+        for i in range(gap, n):
+
+            temp_info = get_element(my_list, i)
+            j = i
+
+            while j >= gap:
+
+                prev_info = get_element(my_list, j - gap)
+
+                if sort_crit(temp_info, prev_info):
+                    change_info(my_list, j, prev_info)
+                    j -= gap
+
+                else:
+                    break
+
+            change_info(my_list, j, temp_info)
+        gap //= 2
+
+    return my_list
     
             
     
