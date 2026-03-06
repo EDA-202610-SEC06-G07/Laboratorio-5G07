@@ -238,7 +238,23 @@ def insertion_sort(my_list, sort_crit):
     return my_list
 
 def selection_sort(my_list, sort_crit):
-    pass
+    
+    n = size(my_list)
+    
+    for i in range(n):
+        min_idx = i
+        
+        for j in range(i + 1, n):
+            current_j_info = get_element(my_list, j)
+            min_info = get_element(my_list, min_idx)
+            
+            if sort_crit(current_j_info, min_info):
+                min_idx = j
+                
+        if min_idx != i:
+            exchange(my_list, i, min_idx)
+            
+    return my_list
 
 def shell_sort(my_list, sort_crit):
 
