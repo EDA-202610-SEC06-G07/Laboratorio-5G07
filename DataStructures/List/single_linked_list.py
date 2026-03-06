@@ -284,5 +284,35 @@ def shell_sort(my_list, sort_crit):
 
     return my_list
     
-            
     
+def merge_sort(my_list, sort_crit, left, right):
+    pass
+
+def merge(left, right, sort_crit):
+    
+    output = new_list()
+    
+    i = j = 0
+    
+    while i < size(left) and j < size(right):
+        
+        if sort_crit(get_element(left, i), get_element(right, j)):
+            
+            add_last(output, get_element(left, i))
+            
+            i += 1
+        
+        else:
+            
+            add_last(output, get_element(right, j))
+            
+            j += 1
+            
+    for n in range(i, size(left)):
+        add_last(output, get_element(left, n))
+    
+    for m in range(j, size(right)):
+        add_last(output, get_element(right, m))
+    
+    return output
+        
