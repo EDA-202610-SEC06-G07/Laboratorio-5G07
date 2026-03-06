@@ -288,7 +288,7 @@ def shell_sort(my_list, sort_crit):
 def merge_sort(my_list, sort_crit):
     tam = size(my_list)
     
-    if tam == 1:
+    if tam <= 1:
         return my_list
     
     mid = tam // 2

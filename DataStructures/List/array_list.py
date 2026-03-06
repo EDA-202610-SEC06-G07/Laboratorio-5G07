@@ -58,11 +58,11 @@ def delete_element(my_list, pos):
 def default_sort_criteria(element1, element2):
     return element1 < element2
 
-def selection_sort(my_list):
+def selection_sort(my_list, sort_crit):
     for i in range(len(my_list)):
         indice_mas_bajo = i
         for j in range(i+1, len(my_list)):
-            if default_sort_criteria(my_list[j],my_list[indice_mas_bajo]):
+            if sort_crit(my_list[j],my_list[indice_mas_bajo]):
                 indice_mas_bajo = j
         my_list[i], my_list[indice_mas_bajo] = my_list[indice_mas_bajo], my_list[i]
     
@@ -84,7 +84,6 @@ def insertion_sort(my_list, sort_crit):
         
         
     
-
 def shell_sort(my_list, default_sort_criteria):
     n = size(my_list)
     gap = n//2
@@ -103,43 +102,3 @@ def shell_sort(my_list, default_sort_criteria):
         gap //= 2
         
     return my_list
-
-def merge_sort(my_list, sort_crit):
-    if my_list['size'] <= 1:
-        return my_list 
-    
-    mid = my_list["size"]//2
-    left_half = {
-        'size': my_list['size'] - mid,
-        'elements': my_list['elements'][mid:]
-    }
-    right_half = {
-        'size': my_list['size'] - mid,
-        'elements': my_list['elements'][:mid]
-    }
-    
-    left_sorted = merge_sort(left_half, sort_crit)
-    right_sorted = merge_sort(right_half, sort_crit)
-    
-    return _merge(left_sorted, right_sorted, sort_crit)
-
-def _merge(left, right, sort_crit):
-    result = []
-    i = 0
-    j = 0
-    
-    while i < left['size'] and j < right['size']:
-        if sort_crit(left['elements'][i], right['elements'][j]):
-            result.append(left['elements'][i])
-            i += 1
-        else:
-            result.append(right['elements'][j])
-            j += 1
-    
-    result.extend(left['elements'][i:])
-    result.extend(right['elements'][j:])
-    
-    return {
-        'size': len(result),
-        'elements': result
-    }
