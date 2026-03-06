@@ -110,11 +110,11 @@ def merge_sort(my_list, sort_crit):
     
     mid = my_list["size"]//2
     left_half = {
-        'size': my_list['size'] - mid,
+        'size': mid,
         'elements': my_list['elements'][mid:]
     }
     right_half = {
-        'size': my_list['size'] - mid,
+        'size': mid,
         'elements': my_list['elements'][:mid]
     }
     
