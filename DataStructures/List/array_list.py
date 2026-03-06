@@ -103,3 +103,49 @@ def shell_sort(my_list, default_sort_criteria):
         gap //= 2
         
     return my_list
+def merge_sort(my_list, sort_crit):
+    
+    if my_list["size"]<=1:
+        return my_list
+    else:
+        my_list["size"]//2
+        left=new_list()
+        right=new_list()
+    
+    for i in range(1, mid + 1):
+        left = add_last(left, get_element(my_list, i))
+
+    for i in range(mid + 1, my_list['size'] + 1):
+        right = add_last(right, get_element(my_list, i))
+
+    left = merge_sort(left, sort_crit)
+    right = merge_sort(right, sort_crit)
+
+    return merge(left, right, sort_crit)
+
+
+def merge(left, right, sort_crit):
+    result = new_list()
+    i = 1
+    j = 1
+
+    while i <= left['size'] and j <= right['size']:
+        left_element = get_element(left, i)
+        right_element = get_element(right, j)
+
+        if sort_crit(left_element, right_element):
+            result = add_last(result, left_element)
+            i += 1
+        else:
+            result = add_last(result, right_element)
+            j += 1
+            
+    while i <= left['size']:
+        result = add_last(result, get_element(left, i))
+        i += 1
+
+    while j <= right['size']:
+        result = add_last(result, get_element(right, j))
+        j += 1
+
+    return result
