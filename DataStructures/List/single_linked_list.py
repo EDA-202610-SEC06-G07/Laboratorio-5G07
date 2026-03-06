@@ -299,7 +299,9 @@ def merge_sort(my_list, sort_crit):
     left_sort = merge_sort(left_list_raw, sort_crit)
     right_sort = merge_sort(right_list_raw, sort_crit)
     
-    return merge(left_sort, right_sort, sort_crit)
+    sorted_list = merge(left_sort, right_sort, sort_crit)
+    
+    return sorted_list
 
 def merge(left, right, sort_crit):
     
