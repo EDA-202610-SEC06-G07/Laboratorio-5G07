@@ -102,3 +102,43 @@ def shell_sort(my_list, default_sort_criteria):
         gap //= 2
         
     return my_list
+
+def merge_sort(my_list, sort_crit):
+    if my_list['size'] <= 1:
+        return my_list 
+    
+    mid = my_list["size"]//2
+    left_half = {
+        'size': mid,
+        'elements': my_list['elements'][mid:]
+    }
+    right_half = {
+        'size': mid,
+        'elements': my_list['elements'][:mid]
+    }
+    
+    left_sorted = merge_sort(left_half, sort_crit)
+    right_sorted = merge_sort(right_half, sort_crit)
+    
+    return _merge(left_sorted, right_sorted, sort_crit)
+
+def _merge(left, right, sort_crit):
+    result = []
+    i = 0
+    j = 0
+    
+    while i < left['size'] and j < right['size']:
+        if sort_crit(left['elements'][i], right['elements'][j]):
+            result.append(left['elements'][i])
+            i += 1
+        else:
+            result.append(right['elements'][j])
+            j += 1
+    
+    result.extend(left['elements'][i:])
+    result.extend(right['elements'][j:])
+    
+    return {
+        'size': len(result),
+        'elements': result
+    }
