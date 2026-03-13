@@ -143,3 +143,35 @@ def _merge(left, right, sort_crit):
         'size': len(result),
         'elements': result
     }
+def quick_sort(my_list, sort_crit):
+    if my_list["size"]<=1:
+        return my_list
+    
+    elements=my_list["elements"]
+    pivot=elements[my_list["size"]//2]
+    
+    left=new_list()
+    mid=new_list()
+    right=new_list()
+        
+    for i in elements:
+        if i==pivot:
+            add_last(mid,i)
+        elif sort_crit(pivot,i):
+            add_last(right,i)      
+        else:
+            add_last(mid,i)
+            
+    left_sort = quick_sort(left, sort_crit)
+    right_sort = quick_sort(right, sort_crit)
+       
+    ans=new_list()
+    for i in left_sort["elements"]:
+        add_last(ans,i)
+    for i in mid["elements"]:
+        add_last(ans,i)
+    for i in right_sort["elements"]:
+        add_last(ans,i)
+    
+        
+    return ans
