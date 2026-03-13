@@ -285,8 +285,23 @@ def shell_sort(my_list, sort_crit):
     return my_list
     
     
-def merge_sort(my_list, sort_crit, left, right):
-    pass
+def merge_sort(my_list, sort_crit):
+    tam = size(my_list)
+    
+    if tam <= 1:
+        return my_list
+    
+    mid = tam // 2
+    
+    left_list_raw = sub_list(my_list, 0, mid)
+    right_list_raw = sub_list(my_list, mid, tam-mid)
+    
+    left_sort = merge_sort(left_list_raw, sort_crit)
+    right_sort = merge_sort(right_list_raw, sort_crit)
+    
+    sorted_list = merge(left_sort, right_sort, sort_crit)
+    
+    return sorted_list
 
 def merge(left, right, sort_crit):
     

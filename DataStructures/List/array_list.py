@@ -58,11 +58,11 @@ def delete_element(my_list, pos):
 def default_sort_criteria(element1, element2):
     return element1 < element2
 
-def selection_sort(my_list):
+def selection_sort(my_list, sort_crit):
     for i in range(len(my_list)):
         indice_mas_bajo = i
         for j in range(i+1, len(my_list)):
-            if default_sort_criteria(my_list[j],my_list[indice_mas_bajo]):
+            if sort_crit(my_list[j],my_list[indice_mas_bajo]):
                 indice_mas_bajo = j
         my_list[i], my_list[indice_mas_bajo] = my_list[indice_mas_bajo], my_list[i]
     
@@ -84,7 +84,6 @@ def insertion_sort(my_list, sort_crit):
         
         
     
-
 def shell_sort(my_list, default_sort_criteria):
     n = size(my_list)
     gap = n//2
