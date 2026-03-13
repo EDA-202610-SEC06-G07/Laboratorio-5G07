@@ -31,7 +31,7 @@ import time
 from DataStructures.List import array_list as al
 from DataStructures.List import single_linked_list as lt
 
-data_dir = os.path.dirname(os.path.realpath('__file__')) + '/Data/GoodReads'
+data_dir = os.path.dirname(os.path.dirname(os.path.realpath(__file__))) + '/Data/GoodReads'
 
 sort_algorithm = None
 data_structure = None
@@ -62,8 +62,8 @@ def new_logic(user_data_structure):
     # Usamos la estructura seleccionada para inicializar todas las listas
     # TODO: completar la creacion de la lista de autores y tags
     catalog["books"] = data_structure.new_list()
-    catalog["authors"] = None 
-    catalog["tags"] = None 
+    catalog["authors"] = data_structure.new_list()  # ← era None
+    catalog["tags"] = data_structure.new_list() 
     catalog["book_tags"] = data_structure.new_list()
 
     return catalog
@@ -112,7 +112,7 @@ def load_books_tags(catalog):
     """
     Carga la información que asocia tags con libros.
     """
-    bookstagsfile = None  # TODO: completar la ruta del archivo de BOOKS_TAGS
+    bookstagsfile = data_dir + '/book_tags.csv' 
     input_file = csv.DictReader(open(bookstagsfile, encoding='utf-8'))
     for booktag in input_file:
         add_book_tag(catalog, booktag)
