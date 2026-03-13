@@ -178,3 +178,9 @@ def quick_sort(my_list, sort_crit):
     
         
     return ans
+
+def sub_list(my_list, pos, size):
+    sub = new_list()
+    for i in range(pos, pos + size):
+        add_last(sub, get_element(my_list, i))
+    return sub

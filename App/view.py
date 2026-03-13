@@ -195,10 +195,10 @@ def main():
             bk, at, tg, bktg = load_data(control)
             #TODO: imprimir la cantidad de libros, autores, géneros y asociaciones de géneros a libros cargados
             print("Reporte de Carga")
-            print(f"Libros cargados: {data_structure.size(bk)}")
-            print(f"Autores cargados: {data_structure.size(at)}")
-            print(f"Géneros (Tags) cargados: {data_structure.size(tg)}")
-            print(f"Asociaciones Libro-Tag: {data_structure.size(bktg)}")
+            print(f"Libros cargados: {bk}")
+            print(f"Autores cargados: {at}")
+            print(f"Géneros (Tags) cargados: {tg}")
+            print(f"Asociaciones Libro-Tag: {bktg}")
 
         elif int(inputs[0]) == 2:
             number = input("Ingrese el id del libro que desea buscar: ")
