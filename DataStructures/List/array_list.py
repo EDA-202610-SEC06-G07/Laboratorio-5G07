@@ -59,12 +59,16 @@ def default_sort_criteria(element1, element2):
     return element1 < element2
 
 def selection_sort(my_list, sort_crit):
-    for i in range(len(my_list)):
+    n = my_list["size"]
+    elements = my_list["elements"]
+    
+    for i in range(n):
         indice_mas_bajo = i
-        for j in range(i+1, len(my_list)):
-            if sort_crit(my_list[j],my_list[indice_mas_bajo]):
+        for j in range(i+1, n):
+            if sort_crit(elements[j], elements[indice_mas_bajo]):
                 indice_mas_bajo = j
-        my_list[i], my_list[indice_mas_bajo] = my_list[indice_mas_bajo], my_list[i]
+        
+        elements[i], elements[indice_mas_bajo] = elements[indice_mas_bajo], elements[i]
     
     return my_list
 
