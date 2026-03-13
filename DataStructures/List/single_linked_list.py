@@ -330,4 +330,35 @@ def merge(left, right, sort_crit):
         add_last(output, get_element(right, m))
     
     return output
+
+def quick_sort(my_list, sort_crit):
+    tam = size(my_list)
+    
+    if tam <= 1:
+        return my_list
+    
+    pivot = remove_first(my_list)
+    small = new_list()
+    large = new_list()
+    
+    while not is_empty(my_list):
+        current_val = remove_first(my_list)
+        if sort_crit(current_val, pivot):
+            add_last(small, current_val)
+        else:
+            add_last(large, current_val)
+            
+    small_sorted = quick_sort(small, sort_crit)
+    large_sorted = quick_sort(large, sort_crit)
+    
+    while not is_empty(small_sorted):
+        add_last(my_list, remove_first(small_sorted))
         
+    add_last(my_list, pivot)
+    
+    while not is_empty(large_sorted):
+        add_last(my_list, remove_first(large_sorted))
+        
+    return my_list
+    
+           
