@@ -59,12 +59,16 @@ def default_sort_criteria(element1, element2):
     return element1 < element2
 
 def selection_sort(my_list, sort_crit):
-    for i in range(len(my_list)):
+    n = my_list["size"]
+    elements = my_list["elements"]
+    
+    for i in range(n):
         indice_mas_bajo = i
-        for j in range(i+1, len(my_list)):
-            if sort_crit(my_list[j],my_list[indice_mas_bajo]):
+        for j in range(i+1, n):
+            if sort_crit(elements[j], elements[indice_mas_bajo]):
                 indice_mas_bajo = j
-        my_list[i], my_list[indice_mas_bajo] = my_list[indice_mas_bajo], my_list[i]
+        
+        elements[i], elements[indice_mas_bajo] = elements[indice_mas_bajo], elements[i]
     
     return my_list
 
@@ -142,3 +146,35 @@ def _merge(left, right, sort_crit):
         'size': len(result),
         'elements': result
     }
+def quick_sort(my_list, sort_crit):
+    if my_list["size"]<=1:
+        return my_list
+    
+    elements=my_list["elements"]
+    pivot=elements[my_list["size"]//2]
+    
+    left=new_list()
+    mid=new_list()
+    right=new_list()
+        
+    for i in elements:
+        if i==pivot:
+            add_last(mid,i)
+        elif sort_crit(pivot,i):
+            add_last(right,i)      
+        else:
+            add_last(mid,i)
+            
+    left_sort = quick_sort(left, sort_crit)
+    right_sort = quick_sort(right, sort_crit)
+       
+    ans=new_list()
+    for i in left_sort["elements"]:
+        add_last(ans,i)
+    for i in mid["elements"]:
+        add_last(ans,i)
+    for i in right_sort["elements"]:
+        add_last(ans,i)
+    
+        
+    return ans
